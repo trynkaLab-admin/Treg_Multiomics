@@ -1,1 +1,1 @@
-This folder contains the scripts for colocalization analysis between Treg QTLs and immune variants
+This folder contains the scripts for colocalization analysis between Treg QTLs and immune variants. Since QTL analysis was done using GRCh38 and most of the summary statistics at the time of the analysis were in GRCh37, a large portion of the script relies on making the two compatible. The script was adapted from Kaur Alasoo colocWrapper (https://github.com/kauralasoo/colocWrapper). 
