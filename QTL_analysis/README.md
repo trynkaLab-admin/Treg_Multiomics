@@ -1,1 +1,1 @@
-This folder contains the pipelines for eQTLs and chromQTLs analysis in regulatory T cells (Tregs)
+This folder contains the pipelines for QTL mapping in regulatory T cells (Tregs) using RNA and chromatin marks. The Snakefile pipeline was adapted from Kaur Alasoo (https://github.com/kauralasoo/RNAseq_pipeline).
