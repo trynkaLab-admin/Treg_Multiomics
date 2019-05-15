@@ -76,7 +76,7 @@ for (i in 1:dim(qtl_pairs)[1]) {
     qtl_ranges = constructVariantRanges(my_temp_df, GRCh38_variants, cis_dist = cis_window)
     gwas_ranges = constructVariantRanges(my_temp_df, GRCh37_variants, cis_dist = cis_window)
     
-    qtl_summaries = qtltoolsTabixFetchPhenotypes(qtl_ranges, phenotype_values$qtl_summary_list$day0)[[1]] %>%
+    qtl_summaries = qtltoolsTabixFetchPhenotypes(qtl_ranges, phenotype_values$qtl_summary_list[[phenotype]])[[1]] %>%
         dplyr::transmute(snp_id, chr = snp_chr, pos = snp_start, p_nominal, beta) 
     gwas_summaries = tabixFetchGWASSummary(gwas_ranges, paste0(gwas_prefix, ".sorted.txt.gz"))[[1]]
     
@@ -87,7 +87,7 @@ for (i in 1:dim(qtl_pairs)[1]) {
     gwas_min = dplyr::arrange(gwas, p_nominal) %>% dplyr::filter(row_number() == 1)
 
     #Perform coloc analysis
-    coloc_res = colocQtlGWAS(qtl, gwas, N_qtl = 123,ratio_case=ratio)
+    coloc_res = colocQtlGWAS(qtl, gwas, N_qtl = as.numeric(sample_sizes$sample_size),ratio_case=ratio)
     coloc_summary = dplyr::tbl_df(t(data.frame(coloc_res$summary))) %>%
       dplyr::mutate(qtl_pval = qtl_min$p_nominal, gwas_pval = gwas_min$p_nominal,
                     qtl_lead = qtl_min$snp_id, gwas_lead = gwas_min$snp_id, phenotype_id = my_temp_df$phenotype_id) #Add minimal pvalues
