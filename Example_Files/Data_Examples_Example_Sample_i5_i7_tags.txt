@@ -1,0 +1,10 @@
+sample_id	i5_tag	i7_tag
+Sample1	N517	N702
+Sample2	N517	N703
+Sample3	N517	N701
+Sample4	N502	N702
+Sample5	N502	N701
+Sample6	N502	N706
+Sample7	N502	N705
+Sample8	N517	N705
+Sample9	N517	N706
